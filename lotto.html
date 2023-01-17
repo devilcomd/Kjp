@@ -1,0 +1,67 @@
+import random
+
+for n in range(6):
+    print(random.randint(1,45))
+
+random.sample(range(1,46),6)
+
+dest_numbers = list(range(1,46))
+lotto = []
+while len(lotto) < 6:
+      num = random.choice(dest_numbers)
+      if num not in lotto:
+              lotto.append(num)
+lotto.sort()
+print(lotto)
+
+for i in range(5):
+        lotto_sample = random.sample(range(1,46),6)
+        lotto_sample.sort()
+        print(lotto_sample)
+
+while True:
+       cnt = input('게임 횟수를 입력하세요')
+        if cnt.isdigit() == True:
+                for n in range(int(cnt)):
+                       lotto_sample = random.sample(range(1,46),6)
+                        lotto_sample.sort()
+                       print(lotto_sample)
+                break
+        else:
+             print('숫자만 입력주세요')
+
+while True:
+    cnt = input('몇게임을 하시려나요?')
+    lotto_numbers = []
+    if cnt.isdigit() == True:
+        for i in range(int(cnt)):
+            lotto_sample = random.sample(range(1,46),6)
+            lotto_sample.sort()
+            lotto_numbers.append(lotto_sample)
+        break
+    else:
+        print('숫자만 입력하세요')
+print(lotto_numbers)
+
+import pandas as pd
+df = pd.DataFrame(lotto_numbers)
+df.columns =['첫번째번호','두번째번호','세번째번호','네번째번호','다섯번째번호','여섯번째 번호']
+df.to_csv('/content/drive/My Drive/Colab Notebooks/lotto_number.csv')
+
+def get_lotto_numbers(cnt):
+    lotto_numbers = []
+    for i in range(int(cnt)):
+        lotto_sample = random.sample(rangeg(1,46),6)
+        lotto_sample.sort()
+        lotto_numbers.append(lotto_sample)
+    print(lotto_numbers)
+
+while True:
+    cnt = input('몇게임을 하시려나요?')
+    if cnt.isdigit() == True:
+        get_lotto_numbers(cnt)
+        break
+    else:
+        print('숫자만 입력하세요')        
+
+get_lotto_numbers(20)
